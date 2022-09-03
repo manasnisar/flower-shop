@@ -14,7 +14,7 @@ export const deleteEntry = (data) => {
       });
       alert({ message: 'Delete Shipment!', type: 'success' });
     } catch (error) {
-      alert({ message: error.message, type: 'error' });
+      console.error(error.message);
     }
   };
 };
@@ -22,29 +22,15 @@ export const editEntry = (data) => {
   return async (dispatch) => {
     try {
       data = { ...data, tableData: undefined };
-      ///////////// Delete Already existing files
+      // Delete Already existing files
       let removeFiles = [];
       let responseData = {};
 
       if (data.files.length > 0) {
         /// File Exists
         let changedFiles = data.changeFiles;
-
-        // changedFiles.forEach((el) => {
-        //     /// Go through all files in changed
-        //   if (el) {
-        //     let check = data.files.some((file) => {
-        //       let filename = file[1].split(' ')[0];
-
-        //       return el.startsWith(filename);
-        //     });
-        //     if (check) {
-        //       removeFiles.push(el);
-        //     }
-        //   }
-        // });
         for (let i = 0; changedFiles.length > i; i++) {
-          //   /// Go through all files in changed
+          // Go through all files in changed
           let el = changedFiles[i];
           if (el) {
             let check = data.files.some((file) => {
@@ -83,7 +69,7 @@ export const editEntry = (data) => {
       alert({ message: 'Edited Successfully', type: 'success' });
       createBrowserHistory.push('/');
     } catch (error) {
-      alert({ message: error.message, type: 'error' });
+      console.error(error.message);
     }
   };
 };
@@ -123,7 +109,7 @@ export const createEntry = (data) => {
       alert({ message: 'Created Successfully', type: 'success' });
       createBrowserHistory.push('/');
     } catch (error) {
-      alert({ message: error.message, type: 'error' });
+      console.error(error.message);
     }
   };
 };
@@ -139,7 +125,7 @@ export const getData = () => {
       });
       alert({ message: 'Fetched Data', type: 'success' });
     } catch (error) {
-      alert({ message: error.message, type: 'error' });
+      console.error(error.message);
     }
   };
 };
