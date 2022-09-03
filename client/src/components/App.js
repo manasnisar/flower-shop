@@ -59,4 +59,3 @@ const mapStateToProps = (state) => {
   return { reduxState: state.shipments };
 };
 export default connect(mapStateToProps, { getData })(App);
-// "proxy": "http://localhost:8000",
